@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"log"
 
+	"github.com/hamdiBouhani/fav-urls/pkg"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/spf13/cobra"
 )
@@ -94,4 +95,18 @@ func NewListUrlCmd() *cobra.Command {
 			}
 		},
 	}
+}
+
+func NewOpenCmd() *cobra.Command {
+	newUrl := &cobra.Command{
+		Use:   "open",
+		Short: "open url",
+		Long:  ``,
+		Run: func(commandServe *cobra.Command, args []string) {
+			pkg.OpenLinkInChrome(argUrl)
+		},
+	}
+
+	newUrl.Flags().StringVar(&argUrl, "url", "", "new url string")
+	return newUrl
 }

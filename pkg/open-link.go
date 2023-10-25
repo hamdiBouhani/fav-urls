@@ -6,7 +6,7 @@ import (
 	"github.com/chromedp/chromedp"
 )
 
-func openLinkInChrome(urlToOpen string) error {
+func OpenLinkInChrome(urlToOpen string) error {
 	ctx, cancel := chromedp.NewContext(context.Background())
 	defer cancel()
 
